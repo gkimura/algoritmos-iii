@@ -1,0 +1,24 @@
+	
+Árvore:
+	Para a elaboração da árvore com as palavras do dicionario implementamos uma Trie N-ária, no qual cada nodo contém 26 'filhos'(a-z) como descrito abaixo:
+
+		typedef struct no *ApNo;
+		typedef struct no{
+			int altura;
+			int valido;
+			ApNo p[26];
+			char palavra[MAX];
+		}No;
+	
+Inserção de palavras:
+	Como nem sempre as palavras completas estarão localizadas nas folhas e portanto, após completar uma palavra podem haver outras seguidas desse mesmo nodo final, foi necessário durante o processo de inserção do dicionário um bit de validade que é ativado no nodo pertencente a ultima letra de uma palavra, isto é, ao ser detectado uma palavra completa. 
+	Como exemplo temos as palavras 'Chica'(v) - palavra completa.
+				       'Chicago'(v) - palavra completa localizada na folha.
+
+Corretor Ortográfico:
+	Para o corretor nos baseamos no algoritmo de Levenshtein com a utilização de uma matriz que estabelece o número mínimo de operações necessárias para transformar um string em outro, operações essas a inserção, remoção ou substituição de um caractere. 
+
+Dificuldade:
+	A maior dificuldade enfrentada foi durante o processo de inserção das palavras na árvore, mais precisamente na identificação dos ponteiros corretos utilizados em determinado momento, sendo necessário mudar com frequencia para correção de bugs.
+
+
